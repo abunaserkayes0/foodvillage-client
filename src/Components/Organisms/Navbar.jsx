@@ -42,7 +42,7 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{navbar}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn bg-white border-1 border-orange-600 rounded-md text-orange-600">
+        <Link className="btn bg-white border-1 border-orange-600 rounded-md text-orange-600 hover:bg-orange-500 hover:text-white">
           Appointment
         </Link>
         <div className="dropdown dropdown-left">

@@ -1,5 +1,7 @@
+import Carousel from "../Molecules/Carousel";
+
 export default function Home() {
   return (
-    <div>Home</div>
+   <Carousel/>
   )
 }
