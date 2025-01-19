@@ -32,7 +32,7 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 my-3">
       <div className="navbar-start">
         <Link className="font-black text-3xl" to="/">
           FoodVillage
