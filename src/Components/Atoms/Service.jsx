@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Service({ service }) {
-  const { img, price, title } = service || {};
+  const { _id, img, price, title } = service || {};
 
   return (
     <div className="card glass w-96 shadow-lg">
@@ -12,9 +13,9 @@ export default function Service({ service }) {
         <h2 className="card-title font-black">{title}</h2>
         <p className="text-lg font-bold">${price}</p>
         <div className="card-actions justify-end">
-          <button className="text-orange-600">
+          <Link to={`/foods/${_id}`} className="text-orange-600">
             <ArrowRight />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
