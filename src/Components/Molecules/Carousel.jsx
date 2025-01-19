@@ -1,4 +1,3 @@
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import CarouselItem from "../Atoms/CarouselItem";
 
 export default function Carousel() {
