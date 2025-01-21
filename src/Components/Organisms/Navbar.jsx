@@ -24,8 +24,8 @@ export default function Navbar() {
         </Link>
       </li>
       <li>
-        <Link className="text-sm font-bold" to="/contact">
-          Contact
+        <Link className="text-sm font-bold" to="/login">
+          Login
         </Link>
       </li>
     </>
@@ -42,7 +42,7 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{navbar}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn text-[12px] md:text-xl bg-white border-1 border-orange-600 rounded-md text-orange-600 hover:bg-orange-500 hover:text-white">
+        <Link className="btn text-[12px] md:text-xl bg-white border-1 border-red-600 rounded-md text-red-600 hover:bg-red-500 hover:text-white">
           Appointment
         </Link>
         <div className="dropdown dropdown-left">

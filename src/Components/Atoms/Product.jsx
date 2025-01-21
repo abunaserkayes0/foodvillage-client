@@ -15,7 +15,7 @@ export default function Product({ img, title, paragraph, rating }) {
               <span
                 key={index}
                 className={`${
-                  index < rating ? "text-yellow-400" : "text-gray-300"
+                  index < rating ? "text-red-400" : "text-gray-300"
                 }`}
               >
                 <StarIcon strokeWidth={6} />

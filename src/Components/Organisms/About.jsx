@@ -17,7 +17,7 @@ export default function About() {
 
       {/* Text Content */}
       <div className="flex flex-col gap-6 pt-10 md:gap-10 lg:p-16">
-        <h4 className="text-xl sm:text-2xl font-bold text-orange-700">
+        <h4 className="text-xl sm:text-2xl font-bold text-red-700">
           About Us
         </h4>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug">
@@ -35,7 +35,7 @@ export default function About() {
         </p>
         <div>
           <button
-            className="bg-orange-600 text-white text-base p-3 sm:p-4 rounded-sm font-bold  hover:bg-orange-700 transition-colors"
+            className="bg-red-600 text-white text-base p-3 sm:p-4 rounded-sm font-bold  hover:bg-red-700 transition-colors"
             aria-label="Get more information about us"
           >
             Get More Info

@@ -13,7 +13,7 @@ export default function Service({ service }) {
         <h2 className="card-title font-black">{title}</h2>
         <p className="text-lg font-bold">${price}</p>
         <div className="card-actions justify-end">
-          <Link to={`/foods/${_id}`} className="text-orange-600">
+          <Link to={`/foods/${_id}`} className="text-red-600">
             <ArrowRight />
           </Link>
         </div>

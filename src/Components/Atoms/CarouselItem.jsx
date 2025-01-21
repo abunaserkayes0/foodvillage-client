@@ -26,12 +26,12 @@ export default function CarouselItem({
         </p>
         <div className="flex flex-row gap-3 justify-center ">
           <div>
-            <button className="btn bg-orange-50 text-[8px] text-black hover:outline hover:outline-2 hover:bg-orange-800 hover:text-white md:text-sm lg:tex-xl">
+            <button className="btn bg-red-50 text-[8px] text-black hover:outline hover:outline-2 hover:bg-red-800 hover:text-white md:text-sm lg:tex-xl">
               Discover More <ArrowRight />
             </button>
           </div>
           <div>
-            <button className="btn bg-orange-50 text-[8px] text-black hover:outline hover:outline-2 hover:bg-orange-800 hover:text-white md:text-sm lg:tex-xl">
+            <button className="btn bg-red-50 text-[8px] text-black hover:outline hover:outline-2 hover:bg-red-800 hover:text-white md:text-sm lg:tex-xl">
               Latest Project <ArrowRight />
             </button>
           </div>
@@ -42,13 +42,13 @@ export default function CarouselItem({
       <div className="absolute hidden right-5 bottom-5 md:right-10 md:bottom-10 md:flex gap-5">
         <a
           href={previousSlide}
-          className="btn btn-circle text-black hover:bg-orange-700 hover:text-white "
+          className="btn btn-circle text-black hover:bg-red-700 hover:text-white "
         >
           <MoveLeftIcon />
         </a>
         <a
           href={NextSlide}
-          className="btn btn-circle text-black hover:bg-orange-700 hover:text-white"
+          className="btn btn-circle text-black hover:bg-red-700 hover:text-white"
         >
           <MoveRightIcon />
         </a>

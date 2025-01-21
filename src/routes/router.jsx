@@ -4,6 +4,8 @@ import Home from "../Components/Pages/Home";
 import NotFound from "../Components/Atoms/NotFound";
 import ServiceDetails from "../Components/Molecules/ServiceDetails";
 import { url } from "../../utils/fetchurl";
+import Login from "../Components/Templates/Login";
+import Register from "../Components/Templates/Register";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
         path: "/foods/:id",
         element: <ServiceDetails />,
         loader: ({ params: { id } }) => fetch(`${url}/foods/${id}`),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "*",

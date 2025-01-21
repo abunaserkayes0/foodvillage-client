@@ -31,7 +31,7 @@ export default function Testimonial({ img, name, profession, rating }) {
               <span
                 key={index}
                 className={`${
-                  rating > index ? "text-yellow-500" : "text-gray-300"
+                  rating > index ? "text-red-500" : "text-gray-300"
                 }`}
               >
                 <Star strokeWidth={4} />

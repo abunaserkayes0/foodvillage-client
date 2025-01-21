@@ -42,7 +42,7 @@ export default function Services() {
         {!allServices && services.length > 6 && (
           <div className="flex items-center justify-center p-6 w-full my-4">
             <button
-              className="btn bg-orange-600  font-bold text-white hover:outline hover:outline-white hover:bg-orange-700"
+              className="btn bg-red-600  font-bold text-white hover:outline hover:outline-white hover:bg-red-700"
               onClick={() => setAllServices(true)}
             >
               More Services <ArrowRight />
