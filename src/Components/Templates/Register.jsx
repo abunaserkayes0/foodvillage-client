@@ -2,15 +2,27 @@ import { Link } from "react-router-dom";
 import InputField from "../Atoms/InputField";
 import SocialMedia from "../Molecules/SocialMedia";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
+import auth from "../../Firebase/firebase.init";
 
 export default function Register() {
+  const { createUser } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const { name, email, password } = data;
+    createUser(email, password).then(() => {
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
+        toast.success("User is Created SuccessFully");
+      });
+    });
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center gap-x-5 my-14">
@@ -74,6 +86,7 @@ export default function Register() {
               Login
             </Link>
           </label>
+          {/* <ToastContainer /> */}
           <div className="form-control mt-6">
             <button className="btn bg-red-500 text-white hover:bg-red-600 text-xl">
               Register

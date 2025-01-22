@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function Navbar() {
+  const { user, logOut } = useAuth();
   const navbar = (
     <>
       <li>
@@ -23,11 +25,19 @@ export default function Navbar() {
           Blog
         </Link>
       </li>
-      <li>
-        <Link className="text-lg font-bold" to="/login">
-          Login
-        </Link>
-      </li>
+      {user ? (
+        <li>
+          <Link onClick={logOut} className="text-lg font-bold" to="/login">
+            LogOut
+          </Link>
+        </li>
+      ) : (
+        <li>
+          <Link className="text-lg font-bold" to="/login">
+            Login
+          </Link>
+        </li>
+      )}
     </>
   );
 
