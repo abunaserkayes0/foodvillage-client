@@ -51,11 +51,6 @@ export default function Login() {
           {errors?.password && (
             <p className="text-red-400">{errors.password.message}</p>
           )}
-          <label className="label">
-            <Link to="/register" className="label-text-alt link link-hover">
-              Register
-            </Link>
-          </label>
           <SocialMedia />
           <label>
             Have an account?
