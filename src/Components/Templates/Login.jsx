@@ -57,6 +57,15 @@ export default function Login() {
             </Link>
           </label>
           <SocialMedia />
+          <label>
+            Have an account?
+            <Link
+              to="/register"
+              className="label-text-alt link link-hover text-xl text-red-600 hover:text-red-500"
+            >
+              Register
+            </Link>
+          </label>
           <div className="form-control mt-6">
             <button className="btn bg-red-500 text-white hover:bg-red-600 ">
               Login

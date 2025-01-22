@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 
 export default function ServiceDetails() {
   const data = useLoaderData();
-  console.log(data);
   
   const { _id, title, img, facility, description, price } = data || {};
 
@@ -12,12 +11,12 @@ export default function ServiceDetails() {
     <>
       <BreadcrumbBanner
         currentPath={_id}
-        title="services Details"
+        title="Services Details"
         imgUrl="https://res.cloudinary.com/dhjkntuy2/image/upload/v1737130542/FoodVillage/others/bg-one_n8p5bh.png"
         className="w-full h-auto"
       />
-      <section className="container mx-auto px-4 flex flex-col gap-5 md:flex-row">
-        <article className="w-full">
+      <section className="container mx-auto px-4 flex flex-col gap-5 md:flex-row md:justify-between">
+        <article className="max-w-screen-lg">
           <img
             className="w-full h-auto object-cover"
             src={img}
@@ -26,7 +25,7 @@ export default function ServiceDetails() {
           <h3 className="font-bold text-2xl md:text-4xl py-3">{title}</h3>
           <p className="text-sm md:text-lg">{description}</p>
         </article>
-        <article className="">
+        <article className="w-fit">
           <div className="w-full p-7 font-bold  bg-stone-200 rounded-lg h-96">
             <h5 className="font-black text-lg md:text-xl">Services</h5>
             {facility?.map((fac, index) => (

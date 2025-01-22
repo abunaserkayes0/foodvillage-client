@@ -44,7 +44,7 @@ export default function Testimonials() {
           },
         }}
         modules={[Pagination, Autoplay]}
-        className="mySwiper"
+        className="mySwiper my-10"
       >
         <SwiperSlide>
           <Testimonial

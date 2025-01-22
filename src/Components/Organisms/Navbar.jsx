@@ -4,27 +4,27 @@ export default function Navbar() {
   const navbar = (
     <>
       <li>
-        <Link className="text-sm font-bold" to="/">
+        <Link className="text-lg font-bold" to="/">
           Home
         </Link>
       </li>
       <li>
-        <Link className="text-sm font-bold" to="/about">
+        <Link className="text-lg font-bold" to="/about">
           About
         </Link>
       </li>
       <li>
-        <Link className="text-sm font-bold" to="/services">
+        <Link className="text-lg font-bold" to="/services">
           Services
         </Link>
       </li>
       <li>
-        <Link className="text-sm font-bold" to="/blog">
+        <Link className="text-lg font-bold" to="/blog">
           Blog
         </Link>
       </li>
       <li>
-        <Link className="text-sm font-bold" to="/login">
+        <Link className="text-lg font-bold" to="/login">
           Login
         </Link>
       </li>
