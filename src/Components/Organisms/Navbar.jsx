@@ -26,11 +26,29 @@ export default function Navbar() {
         </Link>
       </li>
       {user ? (
-        <li>
-          <Link onClick={logOut} className="text-lg font-bold" to="/login">
-            LogOut
-          </Link>
-        </li>
+        <>
+          <li>
+            <Link onClick={logOut} className="text-lg font-bold" to="/login">
+              LogOut
+            </Link>
+          </li>
+          <li className="text-white flex items-center justify-center">
+            {user?.photoURL ? (
+              <span className="w-full h-full  ">
+               <img
+                src={user.photoURL}
+                alt="User Avatar"
+                className="w-10 h-10 rounded-full"
+              /> 
+              </span>
+            ) : (
+              <span className="bg-red-500 font-bold  mx-3 rounded-full w-10 h-10  ">
+                {user?.displayName.charAt(0).toUpperCase() +
+                  user?.displayName.charAt(1).toUpperCase()}
+              </span>
+            )}
+          </li>
+        </>
       ) : (
         <li>
           <Link className="text-lg font-bold" to="/login">

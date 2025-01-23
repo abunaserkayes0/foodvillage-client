@@ -2,15 +2,36 @@ import { useForm } from "react-hook-form";
 import InputField from "../Atoms/InputField";
 import { Link } from "react-router-dom";
 import SocialMedia from "../Molecules/SocialMedia";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const { signInUser, loading, setLoading } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const { email, password } = data || {};
+    signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          toast.success("User Sign Successfully", {
+            position: "bottom-right",
+          });
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          toast.error(`${error}`, {
+            position: "bottom-right",
+          });
+          setLoading(false);
+        }
+      });
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center gap-x-5 my-14">
@@ -62,7 +83,10 @@ export default function Login() {
             </Link>
           </label>
           <div className="form-control mt-6">
-            <button className="btn bg-red-500 text-white hover:bg-red-600 ">
+            <button
+              disabled={loading}
+              className="btn bg-red-500 text-white hover:bg-red-600 "
+            >
               Login
             </button>
           </div>

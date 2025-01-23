@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import auth from "../../Firebase/firebase.init";
 
 export default function Register() {
-  const { createUser } = useAuth();
+  const { createUser, setLoading, loading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -19,9 +19,15 @@ export default function Register() {
     createUser(email, password).then(() => {
       updateProfile(auth.currentUser, {
         displayName: name,
-      }).then(() => {
-        toast.success("User is Created SuccessFully");
-      });
+      })
+        .then(() => {
+          toast.success("User is Created SuccessFully");
+          setLoading(false);
+        })
+        .catch(() => {
+          toast.error("Something went Wrong");
+          setLoading(false);
+        });
     });
   };
   return (
@@ -58,6 +64,10 @@ export default function Register() {
             name="email"
             validationRules={{
               required: "Email is required",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Email is not valid",
+              },
             }}
           />
           {errors?.email && (
@@ -71,6 +81,10 @@ export default function Register() {
             name="password"
             validationRules={{
               required: "password is required",
+              minLength: {
+                value: 6,
+                message: "Password length must be 6 character",
+              },
             }}
           />
           {errors?.password && (
@@ -86,9 +100,11 @@ export default function Register() {
               Login
             </Link>
           </label>
-          {/* <ToastContainer /> */}
           <div className="form-control mt-6">
-            <button className="btn bg-red-500 text-white hover:bg-red-600 text-xl">
+            <button
+              disabled={loading}
+              className="btn bg-red-500 text-white hover:bg-red-600 text-xl"
+            >
               Register
             </button>
           </div>
