@@ -16,7 +16,7 @@ export default function Navbar() {
         </Link>
       </li>
       <li>
-        <Link className="text-lg font-bold" to="/services">
+        <Link className="text-lg font-bold" to="/addService">
           Services
         </Link>
       </li>

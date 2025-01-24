@@ -1,6 +1,7 @@
 import AuthContext from "../Context/AuthContext";
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -14,6 +15,7 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -53,6 +55,7 @@ export default function AuthProvider({ children }) {
     createUser,
     signInUser,
     googleProvider,
+    facebookProvider,
     logOut,
   };
   return (

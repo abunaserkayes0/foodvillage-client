@@ -6,6 +6,7 @@ import ServiceDetails from "../Components/Molecules/ServiceDetails";
 import { url } from "../../utils/fetchurl";
 import Login from "../Components/Templates/Login";
 import Register from "../Components/Templates/Register";
+import AddService from "../Components/Templates/AddService";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path: "/foods/:id",
         element: <ServiceDetails />,
         loader: ({ params: { id } }) => fetch(`${url}/foods/${id}`),
+      },
+      {
+        path: "/addService",
+        element: <AddService />,
       },
       {
         path: "/login",

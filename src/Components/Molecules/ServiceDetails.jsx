@@ -16,7 +16,7 @@ export default function ServiceDetails() {
         className="w-full h-auto"
       />
       <section className="container mx-auto px-4 flex flex-col gap-5 md:flex-row md:justify-between">
-        <article className="max-w-screen-lg">
+        <article className="max-w-screen-lg md:w-full">
           <img
             className="w-full h-auto object-cover"
             src={img}
