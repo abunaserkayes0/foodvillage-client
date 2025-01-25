@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
 import InputField from "../Atoms/InputField";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialMedia from "../Molecules/SocialMedia";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
 export default function Login() {
   const { signInUser, loading, setLoading } = useAuth();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,13 +18,14 @@ export default function Login() {
     const { email, password } = data || {};
     signInUser(email, password)
       .then((result) => {
-        const user = result.user;
-        if (user) {
-          toast.success("User Sign Successfully", {
-            position: "bottom-right",
-          });
-          setLoading(false);
-        }
+        result && navigate(state || "/");
+        // if (result) {
+        //   toast.success("User Sign Successfully", {
+        //     position: "bottom-right",
+        //   });
+        //   setLoading(false);
+
+        // }
       })
       .catch((error) => {
         if (error) {

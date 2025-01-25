@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export default function ServiceDetails() {
   const data = useLoaderData();
   
-  const { _id, title, img, facility, description, price } = data || {};
+  const { _id, title, img, description, facility, price } = data || {};
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function ServiceDetails() {
                 className="flex items-center justify-between p-4 text-sm bg-white rounded-md my-5 hover:bg-red-500 hover:text-white"
                 key={index}
               >
-                <h4>{fac.name}</h4>
+                <h4>{fac?.name}</h4>
                 <ArrowRight />
               </div>
             ))}
@@ -41,7 +41,7 @@ export default function ServiceDetails() {
           <div className="my-5 bg-stone-200 p-5 rounded-sm">
             <h5 className="text-xl font-bold my-3">Price:${price}</h5>
             <button className="bg-red-600 font-bold rounded text-white px-3 py-2">
-              CheckOut 
+              CheckOut
             </button>
           </div>
         </article>

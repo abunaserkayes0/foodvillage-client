@@ -7,6 +7,7 @@ import { url } from "../../utils/fetchurl";
 import Login from "../Components/Templates/Login";
 import Register from "../Components/Templates/Register";
 import AddService from "../Components/Templates/AddService";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/foods/:id",
-        element: <ServiceDetails />,
+        element: (
+          <PrivetRoute>
+            <ServiceDetails />
+          </PrivetRoute>
+        ),
         loader: ({ params: { id } }) => fetch(`${url}/foods/${id}`),
       },
       {
         path: "/addService",
-        element: <AddService />,
+        element: (
+          <PrivetRoute>
+            {" "}
+            <AddService />{" "}
+          </PrivetRoute>
+        ),
+        loader: () => fetch(`${url}/foods`),
       },
       {
         path: "/login",

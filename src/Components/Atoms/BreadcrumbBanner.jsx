@@ -7,7 +7,11 @@ export default function BreadcrumbBanner({ title, currentPath, imgUrl }) {
       <div className="bg-black/50 inset-0 absolute rounded-lg"></div>
       <div className="relative z-10 flex flex-col justify-center items-center h-full">
         <h2 className="text-center text-white text-3xl font-bold">{title}</h2>
-        <span className="text-white text-xl font-bold bg-red-600 p-2">{currentPath}</span>
+        {currentPath && (
+          <span className="text-white text-xl font-bold bg-red-600 p-2">
+            {currentPath}
+          </span>
+        )}
       </div>
     </div>
   );

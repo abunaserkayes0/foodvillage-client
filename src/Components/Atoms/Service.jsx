@@ -6,7 +6,7 @@ export default function Service({ service }) {
 
   return (
     <div className="card glass w-96 shadow-lg">
-      <figure>
+      <figure className="max-w-md max-h-48">
         <img src={img} alt="car!" />
       </figure>
       <div className="card-body">
