@@ -2,16 +2,19 @@ import { toast } from "react-toastify";
 import auth from "../../Firebase/firebase.init";
 import useAuth from "../../hooks/useAuth";
 import { signInWithPopup } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 ("firebase/auth");
 export default function SocialMedia() {
   const { googleProvider, facebookProvider } = useAuth();
-
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const SocialMediaHandler = (provider) => {
     signInWithPopup(auth, provider).then((result) => {
       if (result?.user) {
         toast.success("User Login Successfully", {
           position: "bottom-right",
         });
+        navigate(state || "/");
       }
     });
   };
