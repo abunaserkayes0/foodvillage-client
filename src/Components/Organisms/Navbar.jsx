@@ -15,11 +15,13 @@ export default function Navbar() {
           About
         </Link>
       </li>
-      <li>
-        <Link className="text-lg font-bold" to="/addService">
-          Services
-        </Link>
-      </li>
+      {user && (
+        <li>
+          <Link className="text-lg font-bold" to="/addService">
+            Services
+          </Link>
+        </li>
+      )}
       <li>
         <Link className="text-lg font-bold" to="/blog">
           Blog
@@ -35,11 +37,11 @@ export default function Navbar() {
           <li className="text-white flex items-center justify-center">
             {user?.photoURL ? (
               <span className="w-full h-full  ">
-               <img
-                src={user?.photoURL}
-                alt="User Avatar"
-                className="w-10 h-10 rounded-full"
-              /> 
+                <img
+                  src={user?.photoURL}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full"
+                />
               </span>
             ) : (
               <span className="bg-red-500 font-bold  mx-3 rounded-full w-10 h-10  ">

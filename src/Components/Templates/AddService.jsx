@@ -36,7 +36,7 @@ export default function AddService() {
         },
       ],
     };
-    fetch(`${url}/foods`, {
+    fetch(`${url}/food`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
