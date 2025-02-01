@@ -9,14 +9,20 @@ export default function SocialMedia() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const SocialMediaHandler = (provider) => {
-    signInWithPopup(auth, provider).then((result) => {
-      if (result?.user) {
-        toast.success("User Login Successfully", {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        if (result?.user) {
+          toast.success("User Login Successfully", {
+            position: "bottom-right",
+          });
+          navigate(state || "/");
+        }
+      })
+      .catch((error) => {
+        toast.error(`${error}`, {
           position: "bottom-right",
         });
-        navigate(state || "/");
-      }
-    });
+      });
   };
 
   return (

@@ -1,10 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import BreadcrumbBanner from "../Atoms/BreadcrumbBanner";
 import { ArrowRight } from "lucide-react";
 
 export default function ServiceDetails() {
   const data = useLoaderData();
-  
+  const navigate =  useNavigate();
   const { _id, title, img, description, facility, price } = data || {};
 
   return (
@@ -40,7 +40,7 @@ export default function ServiceDetails() {
           </div>
           <div className="my-5 bg-stone-200 p-5 rounded-sm">
             <h5 className="text-xl font-bold my-3">Price:${price}</h5>
-            <button className="bg-red-600 font-bold rounded text-white px-3 py-2">
+            <button onClick={()=>navigate(`/addService/${_id}`)} className="bg-red-600 font-bold rounded text-white px-3 py-2">
               CheckOut
             </button>
           </div>

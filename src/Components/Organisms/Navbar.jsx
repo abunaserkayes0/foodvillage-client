@@ -16,11 +16,18 @@ export default function Navbar() {
         </Link>
       </li>
       {user && (
-        <li>
-          <Link className="text-lg font-bold" to="/addService">
-            Services
-          </Link>
-        </li>
+        <>
+          <li>
+            <Link className="text-lg font-bold" to="/myService">
+              My Service
+            </Link>
+          </li>
+          <li>
+            <Link className="text-lg font-bold" to="/service-confirmation">
+              Service Confirmation
+            </Link>
+          </li>
+        </>
       )}
       <li>
         <Link className="text-lg font-bold" to="/blog">
@@ -36,15 +43,15 @@ export default function Navbar() {
           </li>
           <li className="text-white flex items-center justify-center">
             {user?.photoURL ? (
-              <span className="w-full h-full  ">
+              <span className="w-20 h-20 items-center justify-center">
                 <img
                   src={user?.photoURL}
                   alt="User Avatar"
-                  className="w-10 h-10 rounded-full"
+                  className="rounded-full"
                 />
               </span>
             ) : (
-              <span className="bg-red-500 font-bold  mx-3 rounded-full w-10 h-10  ">
+              <span className="bg-red-500 font-bold mx-3 w-10 h-10 items-center justify-center rounded-full ">
                 {user?.displayName?.charAt(0)?.toUpperCase() +
                   user?.displayName?.charAt(1)?.toUpperCase()}
               </span>

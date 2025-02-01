@@ -10,8 +10,8 @@ import useAuth from "../../hooks/useAuth";
 export default function AddService() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const foods = useLoaderData();
-  const foodsLen = foods.length;
+  const { title, price, _id, img } = useLoaderData();
+
   const {
     register,
     handleSubmit,
@@ -22,13 +22,13 @@ export default function AddService() {
   const onSubmit = (data) => {
     const { img, description, title, price, serviceType, details, name } = data;
     const newService = {
+      foodId: _id,
       email: user.email,
       img,
       description,
       title,
       price,
       serviceType,
-      food_id: String(foodsLen),
       facility: [
         {
           name: name,
@@ -62,7 +62,7 @@ export default function AddService() {
   return (
     <>
       <BreadcrumbBanner
-        title="Add Service"
+        title="CheckOut Service"
         imgUrl="https://res.cloudinary.com/dhjkntuy2/image/upload/v1737130541/FoodVillage/others/bg-two_bfqesk.png"
         className="w-full h-auto"
       />
@@ -76,9 +76,11 @@ export default function AddService() {
                 name="title"
                 placeholder="Service Title"
                 register={register}
+                defaultValue={title}
                 validationRules={{
                   required: "Service Title is required",
                 }}
+                disabled={true}
               />
               {errors.title && (
                 <p className="text-red-400 my-1">{errors.title.message}</p>
@@ -94,6 +96,8 @@ export default function AddService() {
                 validationRules={{
                   required: "Service Price is required",
                 }}
+                defaultValue={`$${price}`}
+                disabled={true}
               />
               {errors.price && (
                 <p className="text-red-400 my-1">{errors.price.message}</p>
@@ -111,8 +115,10 @@ export default function AddService() {
                 validationRules={{
                   required: "image is required",
                 }}
+                defaultValue={img}
                 rows={6}
                 cols={60}
+                disabled={true}
               />
 
               {errors.img && (

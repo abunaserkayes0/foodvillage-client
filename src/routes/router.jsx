@@ -8,6 +8,8 @@ import Login from "../Components/Templates/Login";
 import Register from "../Components/Templates/Register";
 import AddService from "../Components/Templates/AddService";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import MyServices from "../Components/Organisms/MyServices";
+import ServiceConfirmation from "../Components/Organisms/ServiceConfirmation";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +29,30 @@ const router = createBrowserRouter([
         loader: ({ params: { id } }) => fetch(`${url}/foods/${id}`),
       },
       {
-        path: "/addService",
+        path: "/addService/:id",
         element: (
           <PrivetRoute>
-            {" "}
-            <AddService />{" "}
+            <AddService />
           </PrivetRoute>
         ),
-        loader: () => fetch(`${url}/foods`),
+        loader: ({ params: { id } }) => fetch(`${url}/foods/${id}`),
+      },
+      {
+        path: "/myService",
+        element: (
+          <PrivetRoute>
+            <MyServices />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/service-confirmation",
+        element: (
+          <PrivetRoute>
+            <ServiceConfirmation />
+          </PrivetRoute>
+        ),
+        loader: () => fetch(`${url}/food`),
       },
       {
         path: "/login",

@@ -1,4 +1,13 @@
-export default function InputField({ labelText, inputType, placeholder,register,name,validationRules }) {
+export default function InputField({
+  labelText,
+  inputType,
+  placeholder,
+  register,
+  name,
+  validationRules,
+  defaultValue,
+  disabled,
+}) {
   return (
     <div className="form-control">
       <label className="label">
@@ -7,8 +16,10 @@ export default function InputField({ labelText, inputType, placeholder,register,
       <input
         type={inputType}
         placeholder={placeholder}
-        {...register(name,validationRules)}
+        {...register(name, validationRules)}
         className="input input-bordered"
+        defaultValue={defaultValue}
+        disabled={disabled}
       />
     </div>
   );
