@@ -9,14 +9,14 @@ export default function ServiceConfirmation() {
   const [allFoods, setAllFoods] = useState(foods);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handelChangeStatus = (e, foodId) => {
+  const handelChangeStatus = (e, id) => {
     setIsLoading(true);
     const data = {
       status: e.target.value,
     };
 
     setIsLoading(true);
-    fetch(`${url}/food/${foodId}`, {
+    fetch(`${url}/food/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export default function ServiceConfirmation() {
           {allFoods.length === 0 ? (
             <p>There is no items found </p>
           ) : (
-            allFoods.map(({ _id, foodId, img, title, email, status }) => (
+            allFoods.map(({_id, img, title, email, status }) => (
               <tr key={_id}>
                 <td>
                   <div className="flex items-center gap-3">
@@ -79,7 +79,7 @@ export default function ServiceConfirmation() {
                 </td>
                 <th>
                   <select
-                    onChange={(e) => handelChangeStatus(e, foodId)}
+                    onChange={(e) => handelChangeStatus(e, _id)}
                     defaultValue={status || ""}
                     className="select select-bordered w-full max-w-xs"
                   >

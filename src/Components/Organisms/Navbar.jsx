@@ -23,8 +23,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="text-lg font-bold" to="/service-confirmation">
-              Service Confirmation
+            <Link className="text-lg font-bold" to="/viewServices">
+              View Services
             </Link>
           </li>
         </>

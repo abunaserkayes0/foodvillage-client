@@ -9,6 +9,7 @@ import Register from "../Components/Templates/Register";
 import AddService from "../Components/Templates/AddService";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import MyServices from "../Components/Organisms/MyServices";
+import ViewServices from "../Components/Organisms/ViewServices";
 import ServiceConfirmation from "../Components/Organisms/ServiceConfirmation";
 
 const router = createBrowserRouter([
@@ -46,13 +47,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/service-confirmation",
+        path: "/viewServices",
+        element: (
+          <PrivetRoute>
+            <ViewServices />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/serviceConfirmation/:id",
         element: (
           <PrivetRoute>
             <ServiceConfirmation />
           </PrivetRoute>
         ),
-        loader: () => fetch(`${url}/food`),
+        loader: ({ params: { id } }) => fetch(`${url}/food/${id}`),
       },
       {
         path: "/login",

@@ -13,7 +13,9 @@ export default function MyServices() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${url}/food?email=${email}`)
+    fetch(`${url}/my-food?email=${email}`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((result) => {
         setMyServices(result);
@@ -43,7 +45,7 @@ export default function MyServices() {
             </tr>
           </thead>
           <tbody>
-            {myServices.map((myService) => (
+            {myServices?.map((myService) => (
               <MyService key={myService._id} myService={myService} />
             ))}
           </tbody>
