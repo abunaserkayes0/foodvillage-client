@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialMedia from "../Molecules/SocialMedia";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { url } from "../../../utils/fetchurl";
 
 export default function Login() {
   const { signInUser, loading, setLoading } = useAuth();
@@ -18,14 +19,27 @@ export default function Login() {
     const { email, password } = data || {};
     signInUser(email, password)
       .then((result) => {
-        result && navigate(state || "/");
-        // if (result) {
-        //   toast.success("User Sign Successfully", {
-        //     position: "bottom-right",
-        //   });
-        //   setLoading(false);
+        const { email } = result.user;
+        fetch(`${url}/jwt`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+          credentials: "include",
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
 
-        // }
+            result && navigate(state || "/");
+            if (result) {
+              toast.success("User Sign Successfully", {
+                position: "bottom-right",
+              });
+              setLoading(false);
+            }
+          });
       })
       .catch((error) => {
         if (error) {
