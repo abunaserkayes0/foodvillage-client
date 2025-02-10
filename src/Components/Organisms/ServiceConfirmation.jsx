@@ -58,12 +58,12 @@ export default function ServiceConfirmation() {
           {allFoods.length === 0 ? (
             <p>There is no items found </p>
           ) : (
-            allFoods.map(({_id, img, title, email, status }) => (
+            allFoods?.map(({ _id, img, title, price, email, status }) => (
               <tr key={_id}>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12" key={_id}>
+                      <div className="mask mask-squircle h-20 w-20" key={_id}>
                         <img src={img} alt="Avatar Tailwind CSS Component" />
                       </div>
                     </div>
@@ -74,7 +74,7 @@ export default function ServiceConfirmation() {
                   </div>
                 </td>
                 <td className="font-bold">
-                  price
+                  {price}
                   <br />
                 </td>
                 <th>

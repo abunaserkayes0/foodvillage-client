@@ -10,13 +10,14 @@ import {
 import auth from "../Firebase/firebase.init";
 import { useEffect, useState } from "react";
 import Loading from "../Components/Atoms/Loading";
+import axios from "axios";
+import { url } from "../../utils/fetchurl";
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
-
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -27,12 +28,29 @@ export default function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+      setUser(user);
+      if (user?.email) {
+        const userEmail = { email: user.email };
+        axios
+          .post(`${url}/jwt`, userEmail, {
+            withCredentials: true,
+          })
+          .then((result) => console.log(result.data.message))
+          .catch((error) => console.log(error));
+      } else {
+        axios
+          .post(
+            `${url}/logout`,
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((result) => console.log(result.data))
+          .catch((error) => console.log(error));
       }
       setLoading(false);
     });

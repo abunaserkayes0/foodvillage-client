@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import MyService from "../Atoms/MyService";
-import { url } from "../../../utils/fetchurl";
+// import { url } from "../../../utils/fetchurl";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Atoms/Loading";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export default function MyServices() {
   const [myServices, setMyServices] = useState([]);
@@ -10,22 +11,21 @@ export default function MyServices() {
   const {
     user: { email },
   } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${url}/my-food?email=${email}`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
+    axiosSecure
+      .get(`/my-food?email=${email}`)
       .then((result) => {
-        setMyServices(result);
+        setMyServices(result.data);
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
       });
-  }, [email]);
+  }, []);
 
   let content;
 
