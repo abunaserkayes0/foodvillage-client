@@ -61,7 +61,10 @@ const router = createBrowserRouter([
             <ServiceConfirmation />
           </PrivetRoute>
         ),
-        loader: ({ params: { id } }) => fetch(`${url}/food/${id}`),
+        loader: ({ params: { id } }) =>
+          fetch(`${url}/food/${id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/login",
